@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire</title>
+        <meta charset="utf-8">
+      <!--<script src="script.js"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+      <style>
+           #google_canvas{
+               width: 400px;
+               height: 400px;
+           }  
+        </style>
+    </head>
+    <body>
+        <h1>Contact</h1>
+        <p>Be called back for more information</p>
+        <form action="test.html" method="post" autocomplete="on">
+            <pre>
+         First name (*) <input id="pseudo" type="text"oninput="sessionStorage.setItem('username', this.value);" required><br>
+         
+          Last name (*) <input id="pseudo1" type="text" oninput="sessionStorage.setItem('lastname', this.value); " required name=" last Name"><br>
+        
+          You want to be 
+          contacted by  <select>
+                        <option selected>Phone  </option>
+                        <option>E-mail </option>
+                        </select>
+           
+           
+           Phone number <input type="tel" maxlength="8">
+
+
+            When (*)    <input type="date"  required >
+
+
+            Between (*) <input type="time" value="07:00" required> and <input type="time" value="07:00" required>
+
+
+                        <input type="reset" value="Cancel">          <input style="background-color: blue;color: white;" type="submit" id="sub" value="submit">
+            
+                    </pre>
+                    
+</form>
+<p id="visit"></p>
+<p id="visit1"></p>
+<p id="visit2"></p>
+<button id = "find-me">Montrer ma localisation</button><br/>
+<p id = "status"></p>
+<a id = "map-link" target="_blank"></a>
+    </body>
+    <script>
+         $(document).ready(function(){ 
+            if(typeof sessionStorage!='undefined') {
+    if('visites' in sessionStorage) {
+        var visitCount=sessionStorage.getItem('visites');
+        visitCount++;
+         sessionStorage.setItem('visites',visitCount);
+        document.getElementById('visit').innerHTML=`bonjour,vous avez visité cette page ${visitCount} fois.`;
+}else {
+      sessionStorage.setItem('visites',1);
+      document.getElementById('visit').innerHTML=`bonjour ,vous avez visité cette page 1 fois.`;
+}
+}
+if(typeof localStorage!='undefined') {
+    if('visites' in localStorage) {
+    var visitCount1=localStorage.getItem('visites');
+    visitCount1++;
+    localStorage.setItem('visites',visitCount1);
+    document.getElementById('visit1').innerHTML=` localStorage :bonjour , vous avez visité cette page ${visitCount1} fois.`;
+}else {
+    localStorage.setItem('visites',1);
+    document.getElementById('visit1').innerHTML=`localStorage :bonjour ,vous avez visité cette page 1 fois.`;
+}
+}
+$("#sub").click(function(){  
+    if(typeof(Storage) !=="undefined") {
+var user={name:"", visit:0};
+user.name=document.getElementById('pseudo').value;
+user.visit=1;
+        if('utilisateur' in localStorage) {
+            var k=0;
+            var recuputil=JSON.parse(localStorage.utilisateur); 
+            var Tab=recuputil.splice(0);
+            for (var i=0;i<Tab.length;i++){
+          if(Tab[i].name==document.getElementById('pseudo').value)
+          {
+            Tab[i].visit++;
+            alert('bonjour '+Tab[i].name+',vous avez visité cette page '+Tab[i].visit+' fois')
+            k++;
+
+          }
+            }
+            if(k==0)
+             {Tab.push(user);}
+            localStorage.utilisateur=JSON.stringify(Tab);
+      
+} else {
+    var utilisateur=[];
+utilisateur.push(user);
+localStorage.utilisateur=JSON.stringify(utilisateur);
+alert('bonjour '+user.name+',vous avez visité cette page '+user.visit+' fois');
+}
+   
+   
+ }
+});
+
+function geoFindMe() {
+
+const status = document.querySelector('#status');
+const mapLink = document.querySelector('#map-link');
+
+mapLink.href = '';
+mapLink.textContent = '';
+
+function success(position) {
+  const latitude  = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  status.textContent = '';
+  mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+  mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+}
+
+function error() {
+  status.textContent = 'Unable to retrieve your location';
+}
+
+if (!navigator.geolocation) {
+  status.textContent = 'Geolocation is not supported by your browser';
+} else {
+  status.textContent = 'Locating…';
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
+}
+
+document.querySelector('#find-me').addEventListener('click', geoFindMe);
+/*
+if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+} else { alert('No Geolocation.');
+}
+function successFunction(position) {
+var map = new google.maps.Map(document.getElementById('google_canvas'),{ zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP });
+var geolocate = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+var infowindow = new google.maps.InfoWindow({ map: map, position: geolocate,content: '' });
+map.setCenter(geolocate);} 
+*/
+});
+    </script>
+</html>

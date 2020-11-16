@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formation</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body >
+<form  method="post" onsubmit="return verif()" name="frm">
+	<h1><center><u>INSCRIPTION</u></center></h1>
+	<label class="position">Nom et prénom *:</label>
+	<input type="text" name="np" >
+	<br/><br/>
+	<label  class="position">CIN *:</label>
+	<input type="text" name="cin" >
+	<br/><br/>
+	<label  class="position">Adresse e-mail *:</label>
+	<input type="email" name="mail">
+	<br/><br/>
+	<label class="position" >Niveau :</label>
+	<br/>
+	<center>
+		<input type="radio" value="Secondaire" name="Niveau" checked="checked" /> Secondaire
+	<input type="radio" value="Universitaire" name="Niveau"  > Universitaire
+	<input type="radio" value="Autre" name="Niveau" > Autre
+	</center>
+	
+	<br/>
+	<label>Modules de formation :</label>
+	<br/>
+	<center>
+		<select name="modules"multiple size="3">
+				<option>Bureautique</option>
+		    <option>SE et Réseaux info</option>
+		    <option>TIC</option>
+			
+	</select>
+	</center>
+	
+	<br/><br/>
+	<p align="right">(*)Champs obligatoires</p>
+	<center>
+		<input type="submit" value="Envoyer" />
+	<input type="reset" value="Annuler" />
+	</center>
+</form>
+<script type="text/javascript">
+	function verif()
+	{
+       if(document.frm.np.value=="")
+       {
+       	alert("s'il vous plait taper votre nom et prénom!");
+       	return false;
+       }
+       if (document.frm.cin=="") {alert("s'il vous plait taper votre numéro de carte CIN!"); return false;}
+       if(document.frm.cin.value.length!=8)
+       	{alert("Numéro de carte CIN est incorrect!"); return false;}
+       if (document.frm.mail.value=="") {alert("Adresse e-mail invalide !"); return false;}
+      if (/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/.test(document.frm.mail.value) ) { 
+   return true; } 
+      	else { alert("Adresse e-mail invalide !"); return false;}
+       	var k=0;    
+       for(var i=0;i<document.frm.modules.options.length;i++){
+       	if (document.frm.modules[i].selected){k+=1};}    
+       	if (k==0) {alert("Choisir s'il vous plait un module de formation!"); return false;}    
+       	if (k>2) {alert("s'il vous plait sélectionner au maximum 2 modules!");return false;}
+
+	}
+</script>
+</body>
+</html>

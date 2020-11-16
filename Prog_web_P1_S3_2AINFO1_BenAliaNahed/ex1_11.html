@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ex11.1</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var newdiv=document.createElement('div');
+	newdiv.id='divTP1';
+	var newstrong=document.createElement('strong');
+	var strongtext= document.createTextNode("World Wide Web Consortium");
+	newstrong.appendChild(strongtext);
+	var new_strong=document.createElement('strong');
+	var strong_text= document.createTextNode("W3C");
+	new_strong.appendChild(strong_text);
+	var newLink = document.createElement('a'); 
+	newLink.href="http://fr.wikipedia.org/wiki/Organisme_de_normalisation";
+	newLink.title="Organisme de normalisation";
+	var linktext=document.createTextNode("organisme de standardisation");
+	newLink.appendChild(linktext);
+	var new_Link = document.createElement('a'); 
+	new_Link.href="http://fr.wikipedia.org/wiki/World_Wide_Web";
+	new_Link.title="World Wide Web";
+	var link_text=document.createTextNode("World Wide Web");
+    new_Link.appendChild(link_text);
+    newdiv.appendChild(document.createTextNode('le'));
+    newdiv.appendChild(newstrong);
+    newdiv.appendChild(document.createTextNode(", abrégé par le sigle "));
+    newdiv.appendChild(new_strong);
+    newdiv.appendChild(document.createTextNode(", est un "));
+    newdiv.appendChild(newLink);
+    newdiv.appendChild(document.createTextNode(" à but non-lucratif chargé de promouvoir la compatibilité des technologies du "));
+    newdiv.appendChild(new_Link);
+    newdiv.appendChild(document.createTextNode("."));
+    document.body.appendChild(newdiv);
+</script>
+</body>
+</html>

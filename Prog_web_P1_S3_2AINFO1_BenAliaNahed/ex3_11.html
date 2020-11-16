@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ex11.3</title>
+</head>
+<body>
+<script type="text/javascript">
+var newdiv=document.createElement('div');
+var newform=document.createElement('form');
+newform.enctype="multipart/form-data";
+newform.method="post";
+newform.action="upload.php";
+var newfiel=document.createElement('fieldset');
+var newleg=document.createElement('legend');
+newleg.appendChild(document.createTextNode('Uploader une image'));
+var newdiv2=document.createElement('div');
+newdiv2.style="text-align: center";
+var newlab=document.createElement('label');
+newlab.for="inputUpload";
+newlab.appendChild(document.createTextNode('Image à uploader :'));
+newdiv2.appendChild(newlab);
+var newinp=document.createElement('input');
+newinp.type="file";
+newinp.name="inputUpload";
+newinp.id="inputUpload";
+newdiv2.appendChild(newinp);
+var newbr=document.createElement('br');
+newdiv2.appendChild(newbr);
+var newbr2=document.createElement('br');
+newdiv2.appendChild(newbr2);
+var newinp2=document.createElement('input');
+newinp2.type="submit";
+newinp2.value="Envoyer";
+newdiv2.appendChild(newinp2);
+newfiel.appendChild(newdiv2);
+newform.appendChild(newfiel);
+newdiv.appendChild(newform);
+document.body.appendChild(newdiv); 
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function moyenne(frm)
+		{
+			var moy =(Number(frm.Dc1.value)*Number(frm.cof1.value)+Number(frm.Dc2.value)*Number(frm.cof2.value)+Number(frm.Ds.value)*Number(frm.cof.value))/(Number(frm.cof1.value)+Number(frm.cof2.value)+Number(frm.cof.value));
+			document.write("votre moyenne est: ", moy);
+		}
+	</script>
+</head>
+<body>
+	<form>
+		Donnez la note du Dc1 : <input type="text" name="Dc1">
+		<br/>
+		DEntrez le coefficient du Dc1 :<input type="text" name="cof1">
+		<br/>
+		Donnez la note du Dc2 : <input type="text" name="Dc2">
+		<br/>
+		Entrez le coefficient du Dc2 :<input type="text" name="cof2">
+		<br/>
+		Donnez la note du Ds : <input type="text" name="Ds">
+		<br/>
+		Entrez le coefficient du Ds :<input type="text" name="cof">
+		<br/>
+        <input type="button"  value="calculer" onclick="moyenne(this.form)">
+	</form>
+</body>
+</html>

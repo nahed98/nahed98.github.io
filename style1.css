@@ -1,0 +1,36 @@
+header, nav, article, section, footer, aside { display: block; } 
+nav {
+	float: left;
+	 width:20%; 
+}
+article {
+	float: right;
+}
+h2 {
+	color: navy;
+	font-size: 2em;
+}
+h1 {
+	font-size: 3em;
+}
+b{
+	font-style: italic;
+}
+body{
+	background-color:#ddd;
+}
+img{
+	border-radius: 60%;
+}
+@media screen and (max-width: 993px) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+@media screen and (max-width: 600px) {
+  body {
+    background-color: olive;
+    color: white;
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nombre de Jours</title>
+</head>
+<body>
+<script type="text/javascript">
+	function nb_jours(frm)
+	{
+		if(Number(frm.mois.value)==1 || Number(frm.mois.value)==3 || Number(frm.mois.value)==5 || Number(frm.mois.value)==7 || Number(frm.mois.value)==8 || Number(frm.mois.value)==10 || Number(frm.mois.value)==12 )
+		{
+			document.write("le Nombre de Jours est 31");
+		}
+		else if (Number(frm.mois.value)==4 || Number(frm.mois.value)==6 || Number(frm.mois.value)==9 || Number(frm.mois.value)==11  ) {
+			document.write("le Nombre de Jours est 30");
+		}
+		else if (Number(frm.mois.value)==2)
+		{
+            if(Number(frm.annee.value)%4 == 0)
+            {
+              document.write("le Nombre de Jours est 29");
+            }
+            else
+            	{document.write("le Nombre de Jours est 28");}
+		}
+
+	}
+</script>
+<form>
+<label> Entrez le mois: </label>
+<input type="text" name="mois">
+<br/>
+<label> Entrez l'annee: </label>
+<input type="text" name="annee">
+<br/>
+<input type="button" value="calculer" onclick="nb_jours(this.form)">
+</form>
+</body>
+</html>

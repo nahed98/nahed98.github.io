@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calcul</title>
+</head>
+<body>
+	<script>
+		function calcul()
+		{
+			document.f.z_reponse.value=eval(document.f.z_saisie.value);
+		}
+		function cal(nb)
+		{
+			document.f.z_saisie.value +=nb;
+		}
+		function cal_op(op)
+		{
+			document.f.z_saisie.value+=op;}
+	</script>
+<form name="f">
+	<input type="text" name="z_saisie">
+		<input type="button" value="=" onclick="calcul()">
+		<input type="text" name="z_reponse" >
+		<table>
+			<tr>
+				<td> <input type="button" value="0" onclick="javascript:cal(0);" /></td>
+				<td><input type="button" value="1" onclick="javascript:cal(1);" /></td>
+				<td><input type="button" value="2" onclick="javascript:cal(2);" /></td>
+				<td> <input type="button" value="3" onclick="javascript:cal(3);" /></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="4" onclick="javascript:cal(4);" /></td>
+				<td> <input type="button" value="5" onclick="javascript:cal(5);" /></td>
+				<td><input type="button" value="6" onclick="javascript:cal(6);" /></td>
+				<td>  <input type="button" value="7" onclick="javascript:cal(7);" /></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="8" onclick="javascript:cal(8);" /></td>
+				<td> <input type="button" value="9" onclick="javascript:cal(9);" /></td>
+				<td><input type="button" value="+" onclick="javascript:cal_op('+');" /></td>
+				<td> <input type="button" value="-" onclick="javascript:cal_op('-');" /></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="*" onclick="javascript:cal_op('*');" /></td>
+				<td>  <input type="button" value="/" onclick="javascript:cal('/');" /></td>
+			</tr>
+		</table>
+	
+	  <a href="#" onclick="calcul()">afficher</a> 
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ex11.2</title>
+</head>
+<body>
+<script type="text/javascript">
+	var newdiv=document.createElement('div');
+	newdiv.id="divTP2";
+	var newp=document.createElement('p');
+	newp.appendChild(document.createTextNode('Langages basés sur ECMAScript :'));
+	var newul=document.createElement('ul'),newli;
+	var lang=[document.createTextNode('JavaScript'),
+    document.createTextNode('JScript'),
+    document.createTextNode('ActionScript'),
+    document.createTextNode('EX4')];
+	for(var i=0;i<lang.length;i++)
+	{
+		newli=document.createElement('li');
+        newli.appendChild(lang[i]);
+        newul.appendChild(newli);
+	}
+    newdiv.appendChild(newp);
+    newdiv.appendChild(newul);
+    document.body.appendChild(newdiv);
+</script>
+</body>
+</html>

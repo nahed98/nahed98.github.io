@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formation</title>
+	<meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body >
+<form  method="post"  action="">
+	<h1><center><u>INSCRIPTION</u></center></h1>
+	<label class="position">Nom et prénom *:</label>
+	<input type="text" name="np" >
+	<br/><br/>
+	<label  class="position">CIN *:</label>
+	<input type="text" name="cin" id="cin" >
+	<br/><br/>
+	<label  class="position">Adresse e-mail *:</label>
+    <input class="verif-email" type="email" name="mail">
+    <div class="error"></div>
+	<br/><br/>
+	<label class="position" >Niveau :</label>
+	<br/>
+	<center>
+        <input type="radio" id="radio" value="Secondaire" name="Niveau" checked="" /> Secondaire
+	<input type="radio"  id="radio" value="Universitaire" name="Niveau" checked=""  > Universitaire
+	<input type="radio"  id="radio" value="Autre" name="Niveau"checked=""  > Autre
+	</center>
+	
+	<br/>
+	<label>Modules de formation :</label>
+	<br/>
+	<center>
+		<select name="modules"multiple size="3">
+				<option>Bureautique</option>
+		    <option>SE et Réseaux info</option>
+		    <option>TIC</option>
+			
+	</select>
+	</center>
+	
+	<br/><br/>
+	<p align="right">(*)Champs obligatoires</p>
+	<center>
+		<input type="submit" value="Envoyer" />
+	<input type="reset" value="Annuler" />
+	</center>
+</form>
+<script type="text/javascript">
+ $(document).ready(function(){
+   
+    $("form").submit(function(){
+        if($('#cin').length<8 || $('#cin').length>8){
+        alert("error numero de cin doit être composé de 8 chiffres");
+    }
+    else{
+        alert("Formulaire bien envoyé");
+    }
+
+    });
+});
+$(document).ready(function(){
+    $("form input:radio[1]").attr("checked","checked");
+    $("input").focus(function(){
+        $(this).css("background-color", "lightBlue");
+    });
+
+    $("input").blur(function(){
+        $(this).css("background-color", "white");
+    });
+    $("body").css( "background-color","pink");
+    $(".position").css( "display:inline-block","width: 150px","text-align: right");
+});
+$(document).ready(function() {
+    $('.verif-email').focusout(function(){
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        var emailblockReg = /^([\w-\.]+@(?!hotmail.fr)(?!hotmail.com)([\w-]+\.)+[\w-]{2,4})?$/;
+        var emailaddressVal = $(this).val();
+         
+        if(emailaddressVal == '') {
+            $('.error').text('Le champs est vide.');
+        } else if(!emailReg.test(emailaddressVal)) {
+            $('.error').text('Ce n\'est pas une adresse email');
+        } else if(!emailblockReg.test(emailaddressVal)) {
+            $('.error').text('N\'utilisez pas votre adresse hotmail ! GRRR');
+        } else {
+            $('.error').text('');
+        }
+    });
+   
+});
+</script>
+</body>
+</html>
